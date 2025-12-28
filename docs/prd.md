@@ -1,8 +1,8 @@
-# Scriptorium
+# Studium
 
 A strict-evidence learning companion that turns your sources into a mastery-driven study loop.
 
-Scriptorium ingests PDFs, web pages, and notes, then helps you **learn, practice, and retain** with:
+Studium ingests PDFs, web pages, and notes, then helps you **learn, practice, and retain** with:
 - source-grounded tutoring (citations by default)
 - adaptive quizzes
 - concept mastery tracking
@@ -16,7 +16,7 @@ Scriptorium ingests PDFs, web pages, and notes, then helps you **learn, practice
 
 Most “AI tutors” are good at explaining and bad at ensuring you actually remember anything later.
 
-Scriptorium is built around a tight loop:
+Studium is built around a tight loop:
 
 1. **Ingest** sources (PDFs, URLs, notes)  
 2. **Teach** with strict citations  
@@ -30,11 +30,11 @@ Scriptorium is built around a tight loop:
 
 ### Strict evidence by default
 - Factual claims should be backed by your sources.
-- If retrieval is weak, Scriptorium says so.
+- If retrieval is weak, Studium says so.
 - Anything not supported is labeled **Uncited general knowledge** (configurable).
 
 ### Mastery, not messages
-Scriptorium models learning progress explicitly:
+Studium models learning progress explicitly:
 - mastery per concept (0–1)
 - decay/stability over time
 - misconception tags (optional)
