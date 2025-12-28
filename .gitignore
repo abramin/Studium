@@ -210,6 +210,14 @@ __marimo__/
 docker-compose.override.yml
 .docker/
 
+# Node / Next.js
+node_modules/
+.next/
+web/.next/
+web/node_modules/
+web/.turbo/
+web/.eslintcache
+
 # Application logs
 logs/
 *.log

@@ -11,6 +11,7 @@ from alembic import context
 # Import your app's config and models
 from app.config import settings
 from app.database import Base
+from app.ingestion import models as ingestion_models  # noqa: F401
 
 # This is the Alembic Config object
 config = context.config
