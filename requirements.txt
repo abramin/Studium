@@ -19,10 +19,6 @@ hiredis==3.0.0
 celery==5.4.0
 flower==2.0.1
 
-# Storage (S3-compatible)
-boto3==1.35.80
-minio==7.2.11
-
 # Document Processing
 pypdf==5.1.0
 pdfplumber==0.11.4
@@ -30,9 +26,8 @@ beautifulsoup4==4.12.3
 lxml==5.3.0
 markdown==3.7
 
-# Vector Embeddings & AI
-openai==1.58.1
-tiktoken==0.8.0
+# Vector Embeddings & AI (Ollama)
+ollama==0.4.4
 
 # HTTP Client
 httpx==0.28.1

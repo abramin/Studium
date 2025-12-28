@@ -93,6 +93,10 @@ python validate.py
 # Start with Docker
 docker compose up -d
 
+# Pull Ollama models
+docker exec -it studium-ollama ollama pull llama3.2
+docker exec -it studium-ollama ollama pull nomic-embed-text
+
 # Visit the API
 open http://localhost:8000/docs
 ```
@@ -101,7 +105,8 @@ open http://localhost:8000/docs
 - Python 3.12+ with FastAPI
 - PostgreSQL 17 with pgvector
 - Redis 7
-- MinIO (S3-compatible storage)
+- Ollama (local LLM & embeddings)
+- Local filesystem storage
 - Celery for background jobs
 
 ---

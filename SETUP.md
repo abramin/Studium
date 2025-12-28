@@ -7,7 +7,6 @@ The easiest way to get started is using Docker Compose, which sets up the entire
 ### Prerequisites
 
 - Docker and Docker Compose installed
-- (Optional) OpenAI API key for AI features
 
 ### Setup Steps
 
@@ -22,26 +21,24 @@ The easiest way to get started is using Docker Compose, which sets up the entire
    cp .env.example .env
    ```
 
-3. **Add your OpenAI API key** (optional for initial testing)
-   
-   Edit `.env` and set:
-   ```
-   OPENAI_API_KEY=your-actual-api-key-here
-   ```
-
-4. **Start the stack**
+3. **Start the stack**
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
    This will start:
    - **API** on http://localhost:8000
    - **PostgreSQL** with pgvector on port 5432
    - **Redis** on port 6379
-   - **MinIO** (S3-compatible storage) on http://localhost:9000
-   - **MinIO Console** on http://localhost:9001
+   - **Ollama** (local LLM) on http://localhost:11434
    - **Celery Worker** for background tasks
    - **Flower** (Celery monitoring) on http://localhost:5555
+
+4. **Pull the Ollama models** (first time setup)
+   ```bash
+   docker exec -it studium-ollama ollama pull llama3.2
+   docker exec -it studium-ollama ollama pull nomic-embed-text
+   ```
 
 5. **Verify the setup**
    ```bash
@@ -55,17 +52,17 @@ The easiest way to get started is using Docker Compose, which sets up the entire
 
 6. **View logs**
    ```bash
-   docker-compose logs -f api
+   docker compose logs -f api
    ```
 
 7. **Stop the stack**
    ```bash
-   docker-compose down
+   docker compose down
    ```
 
    To also remove volumes:
    ```bash
-   docker-compose down -v
+   docker compose down -v
    ```
 
 ## Development Setup (without Docker)
@@ -77,6 +74,7 @@ If you prefer to run without Docker:
 - Python 3.12+
 - PostgreSQL 17 with pgvector extension
 - Redis
+- Ollama (install from https://ollama.ai)
 
 ### Setup Steps
 
@@ -156,8 +154,7 @@ Once the API is running, visit:
 | FastAPI | Backend API | 8000 | http://localhost:8000 |
 | PostgreSQL | Database with pgvector | 5432 | localhost:5432 |
 | Redis | Cache & Message Broker | 6379 | localhost:6379 |
-| MinIO | S3-compatible storage | 9000 | http://localhost:9000 |
-| MinIO Console | Storage admin UI | 9001 | http://localhost:9001 |
+| Ollama | Local LLM & Embeddings | 11434 | http://localhost:11434 |
 | Flower | Celery task monitor | 5555 | http://localhost:5555 |
 
 ### Default Credentials
@@ -167,12 +164,13 @@ Once the API is running, visit:
 - Password: `studium_dev_password`
 - Database: `studium`
 
-**MinIO:**
-- Access Key: `minioadmin`
-- Secret Key: `minioadmin`
-- Bucket: `studium-sources`
-
 **Note:** These are development credentials. Change them for production use.
+
+### Storage
+
+Documents and files are stored in local volumes mounted at `/app/storage`:
+- `uploads/` - Original uploaded files
+- `processed/` - Processed and chunked documents
 
 ## Project Structure
 

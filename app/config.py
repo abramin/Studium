@@ -57,22 +57,20 @@ class Settings(BaseSettings):
         """Generate Celery result backend URL."""
         return self.CELERY_RESULT_BACKEND or self.redis_url
 
-    # S3/MinIO Storage
-    S3_ENDPOINT: str = "http://minio:9000"
-    S3_ACCESS_KEY: str = "minioadmin"
-    S3_SECRET_KEY: str = "minioadmin"
-    S3_BUCKET_NAME: str = "studium-sources"
-    S3_USE_SSL: bool = False
+    # Local Storage
+    LOCAL_STORAGE_PATH: str = "/app/storage"
+    UPLOAD_DIR: str = "/app/storage/uploads"
+    PROCESSED_DIR: str = "/app/storage/processed"
 
-    # OpenAI API
-    OPENAI_API_KEY: str = ""
-    OPENAI_MODEL: str = "gpt-4o-mini"
-    OPENAI_EMBEDDING_MODEL: str = "text-embedding-3-small"
+    # Ollama API (local LLM)
+    OLLAMA_HOST: str = "http://ollama:11434"
+    OLLAMA_MODEL: str = "llama3.2"
+    OLLAMA_EMBEDDING_MODEL: str = "nomic-embed-text"
 
     # Embedding Settings
     CHUNK_SIZE: int = 512
     CHUNK_OVERLAP: int = 50
-    EMBEDDING_DIMENSION: int = 1536
+    EMBEDDING_DIMENSION: int = 768  # nomic-embed-text default
 
 
 settings = Settings()
