@@ -74,12 +74,40 @@ Quizzes and recall drive learning more than passive review.
 ---
 
 ## Status
-Early build. Expect rough edges and fast iteration.
+**Project bootstrapped!** The development environment is set up with Docker and basic FastAPI structure.
 
 Planned milestones:
 - **Phase 1:** source ingestion, strict-cited tutoring, basic quizzes, spaced repetition
 - **Phase 2:** concept graph, adaptive sessions, mastery dashboard, evaluation harness
 - **Phase 3:** richer quiz types, misconception detection, improved retrieval/reranking
+
+### Getting Started
+
+See [SETUP.md](SETUP.md) for detailed setup instructions.
+
+**Quick start:**
+```bash
+# Validate the setup
+python validate.py
+
+# Start with Docker
+docker compose up -d
+
+# Pull Ollama models
+docker exec -it studium-ollama ollama pull llama3.2
+docker exec -it studium-ollama ollama pull nomic-embed-text
+
+# Visit the API
+open http://localhost:8000/docs
+```
+
+**Tech Stack:**
+- Python 3.12+ with FastAPI
+- PostgreSQL 17 with pgvector
+- Redis 7
+- Ollama (local LLM & embeddings)
+- Local filesystem storage
+- Celery for background jobs
 
 ---
 
