@@ -1,3 +1,5 @@
-"""
-Ingestion module: Parse, chunk, embed, and index sources.
-"""
+"""Ingestion package."""
+
+from app.ingestion.models import Source
+
+__all__ = ["Source"]
